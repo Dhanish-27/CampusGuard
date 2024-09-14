@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Roll Number Input</title>
+	<style>
+		/* Yellowish theme */
+		body {
+			background-color: #F7DC6F; /* Light yellow background */
+		}
+		
+		/* Header bar */
+		.header-bar {
+			background-color: #F2C464; /* Darker yellow background */
+			padding: 10px;
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			color: #333; /* Darker text color */
+		}
+		
+		/* Container styles */
+		.container {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			padding: 20px;
+			background-color: #FFFFFF; /* White background */
+			border: 1px solid #CCCCCC; /* Light gray border */
+			border-radius: 10px; /* Rounded corners */
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+		}
+		
+		/* Input field styles */
+		input[type="text"] {
+			padding: 10px;
+			font-size: 18px;
+			border: 1px solid #CCCCCC; /* Light gray border */
+			border-radius: 5px; /* Rounded corners */
+			width: 250px; /* Set width for input field */
+		}
+		
+		/* Button styles */
+		button[type="submit"] {
+			background-color: #F2C464; /* Darker yellow background */
+			color: #FFFFFF; /* White text color */
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px; /* Rounded corners */
+			cursor: pointer; /* Hand cursor on hover */
+		}
+		
+		/* Hover effects */
+		button[type="submit"]:hover {
+			background-color: #FFD700; /* Brighter yellow background on hover */
+		}
+		
+		/* Font styles */
+		body {
+			font-family: Arial, sans-serif;
+		}
+		
+		/* Hide name input field */
+		[name="name"] {
+			display: none;
+		}
+		
+		/* Add some margin and padding to the form elements */
+		form {
+			margin: 20px;
+		}
+		
+		form > * {
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<!-- Header bar with temporary placeholder for college name -->
+	<div class="header-bar">
+		College Name (Temporary Placeholder)
+	</div>
+	
+	<div class="container">
+		<form action="/" method="post">
+            {% csrf_token %}
+			<p>
+				<input type="text" name="roll_number" placeholder="Enter Roll Number">
+			</p>
+			<p>
+				<button type="submit">Submit</button>
+			</p>
+			<p>
+				{{ name }}
+			</p>
+			<p>
+				{{ message }}
+			</p>
+		</form>
+		<form action="checkinside" method="post">
+            {% csrf_token %}
+			<p>
+				<input type="text" name="roll_number" placeholder="Enter Roll Number">
+			</p>
+			<p>
+				<button type="submit">check</button>
+			</p>
+		</form>
+	</div>
+</body>
+</html>
